@@ -9,6 +9,8 @@ login
     Input Text    //*[@id="username-5474"]    kelemarton
     Input Password    //*[@id="user_password-5474"]    Erosjelszo1
     Click Element    //*[@id="um-submit-btn"]
+    Click Element    //*[@id="ast-desktop-header"]/div/div/div/div/div[3]/div[3]/div/div/a
+    Element Should Contain    //*[@id="post-99"]/div/div/div/p[1]/strong[1]    Kele Márton
     Close Browser
 
 register
@@ -23,3 +25,36 @@ register
     Input Password    //*[@id="user_password-5473"]    Erosjelszo1
     Input Password    //*[@id="confirm_user_password-5473"]    Erosjelszo1
     Click Element    //*[@id="um_field_5473_intezmeny_data"]/div[2]/label[1]/span[1]/i
+
+login_empty_username
+    Open Browser    https://keprendeles.optikart.hu/login/?redirect_to=https%3A%2F%2Fkeprendeles.optikart.hu%2Fpquery%2F    firefox
+    Input Text    //*[@id="username-5474"]    ${EMPTY}
+    Input Password    //*[@id="user_password-5474"]    Erosjelszo1
+    Click Element    //*[@id="um-submit-btn"]
+    Element Should Contain    //*[@id="um-error-for-username-5474"]    Please enter your username or email
+    Close Browser
+
+login_empty_password
+    Open Browser    https://keprendeles.optikart.hu/login/?redirect_to=https%3A%2F%2Fkeprendeles.optikart.hu%2Fpquery%2F    firefox
+    Input Text    //*[@id="username-5474"]    kelemarton
+    Input Password    //*[@id="user_password-5474"]    ${EMPTY}
+    Click Element    //*[@id="um-submit-btn"]
+    Element Should Contain    //*[@id="um-error-for-user_password-5474"]    Please enter your password
+    Close Browser
+
+login_empty_credentials
+    Open Browser    https://keprendeles.optikart.hu/login/?redirect_to=https%3A%2F%2Fkeprendeles.optikart.hu%2Fpquery%2F    firefox
+    Input Text    //*[@id="username-5474"]    ${EMPTY}
+    Input Password    //*[@id="user_password-5474"]    ${EMPTY}
+    Click Element    //*[@id="um-submit-btn"]
+    Element Should Contain    //*[@id="um-error-for-username-5474"]    Please enter your username or email
+    Element Should Contain    //*[@id="um-error-for-user_password-5474"]    Please enter your password
+    Close Browser
+
+login_wrong_username
+    Open Browser    https://keprendeles.optikart.hu/login/?redirect_to=https%3A%2F%2Fkeprendeles.optikart.hu%2Fpquery%2F    firefox
+    Input Text    //*[@id="username-5474"]    wrongusernaaaame
+    Input Password    //*[@id="user_password-5474"]    Erosjelszo1
+    Click Element    //*[@id="um-submit-btn"]
+    Element Should Contain    //*[@id="um-error-for-user_password-5474"]    Password is incorrect. Please try again.
+    Close Browser
